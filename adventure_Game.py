@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import time
 
 
@@ -24,7 +22,7 @@ def checker2(choice):
 
 name=input('Enter your name=')
 print('Welcome, {} to this small quiz.'.format(name))
-time.sleep(1)
+time.sleep(1)												#To delay the next display for one sec
 print('Answers should be entered in either True or false.')
 time.sleep(1)
 

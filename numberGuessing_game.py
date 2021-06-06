@@ -1,15 +1,14 @@
-#!/usr/bin/python3
 import random
 mssge="""Enter a number between 1 and 10"""
 print(mssge)
 
 #To input lower and upper bound
 while True:
-    try:
+    try:                                                    #To input lower and upper bound
         lowerBound=int(input('Enter the lower bound='))
         upperBound=int(input('Enter the upper bound='))
         break
-    except:#if inputed bound is wrong
+    except:                                                 #if inputed bound is wrong
         print('\nSorry, wrong input')
 
 print('\n\t--You have total of 5 chances--\n')
