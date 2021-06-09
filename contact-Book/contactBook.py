@@ -3,8 +3,17 @@ from tkinter import ttk 		#ttk contains modern styles needed for the program
 import sqlite3
 
 
-def add():
-	pass
+def save():
+	con=sqlite3.connect('database.db')
+	cursr=con.cursor()
+	cursr.execute("INSERT INTO profiles VALUES(:fname,:address,:ph,:email)",
+		{'fname':entryName.get(),
+		'address':entryAddress.get(),
+		'ph':entryPhone.get(),
+		'email':entryEmail.get()})
+
+	con.commit()
+	con.close()
 
 def edit():
 	pass
@@ -31,7 +40,7 @@ LabelPhone=Label(frame1,text='Phone:')
 entryPhone=Entry(frame1)
 LabelEmail=Label(frame1,text='E-mail:')
 entryEmail=Entry(frame1)
-addButton=Button(frame1,text='add',command=add)
+addButton=Button(frame1,text='add',command=save)
 
 LabelName.grid(row=0,column=0,padx=(10,0),pady=(10,0),sticky=W)
 entryName.grid(row=2,column=0,padx=(10,0))
