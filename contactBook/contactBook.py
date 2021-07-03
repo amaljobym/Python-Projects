@@ -7,11 +7,11 @@ class Contact_book:
 	def __init__(self,mainFrame):
 		self._rootwindow=mainFrame
 
-		#importing the GUI
-		GUI.GUI(self._rootwindow)
-		
 		#creating the database
 		functions.create_db()
+
+		#importing the GUI
+		GUI.GUI(self._rootwindow)
 
 
 
