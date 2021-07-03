@@ -22,9 +22,22 @@ def GUI(rootwindow):
 	entryNumber=Entry(frame1)
 	labelEmail=Label(frame1,text='E-mail')
 	entryEmail=Entry(frame1)
-	buttonEdit=Button(frame1,text='Edit',padx=8)
-	buttonAdd=Button(frame1,text='Add',padx=8,command=functions.add)
-	buttonDelete=Button(frame1,text='Delete',padx=8)
+	buttonShow=Button(frame1,text='Show',padx=8,command=lambda: functions.Display(listContacts,
+																					entryName,
+																					entryAddress,
+																					entryNumber,
+																					entryEmail))
+	buttonAdd=Button(frame1,text='Add',padx=8,command=lambda: functions.add(listContacts,
+																			entryName,
+																			entryAddress,
+																			entryNumber,
+																			entryEmail))
+	buttonDelete=Button(frame1,text='Delete',padx=8,command=lambda: functions.delete(listContacts))
+	buttonEdit=Button(frame1,text='Edit',padx=8,command=lambda: functions.edit(listContacts,
+																			entryName,
+																			entryAddress,
+																			entryNumber,
+																			entryEmail))
 
 	labelName.grid(row=0,column=0,padx=(10,0),pady=(10,0),columnspan=3,sticky=W)
 	entryName.grid(row=1,column=0,padx=(10,0),columnspan=3)
@@ -34,9 +47,10 @@ def GUI(rootwindow):
 	entryNumber.grid(row=5,column=0,padx=(10,0),columnspan=3)
 	labelEmail.grid(row=6,column=0,padx=(10,0),columnspan=3,sticky=W)
 	entryEmail.grid(row=7,column=0,padx=(10,0),columnspan=3)
-	buttonEdit.grid(row=8,column=0,padx=(10,0),pady=(10,0))
+	buttonShow.grid(row=8,column=0,padx=(10,0),pady=(10,0))
 	buttonAdd.grid(row=8,column=1,pady=(10,0))
 	buttonDelete.grid(row=8,column=2,pady=(10,0))
+	buttonEdit.grid(row=9,column=1,pady=(10,0))
 
 	panedWindow.add(frame1,weight=1)							#end of the first frame(frame1)
 
@@ -47,6 +61,9 @@ def GUI(rootwindow):
 	labelContacts=Label(frame2,text='Contacts')
 	listContacts=Listbox(frame2)							#Adding list box to the frame2
 	scrollbar=Scrollbar(frame2,orient=VERTICAL)				#Creating scrollbar in frame2
+
+	functions.show_listbox(listContacts)
+	
 
 	labelContacts.grid(row=0,column=0,padx=(10,0),pady=(10,0))
 	listContacts.grid(row=1,column=0,rowspan=8,padx=(10,0))
